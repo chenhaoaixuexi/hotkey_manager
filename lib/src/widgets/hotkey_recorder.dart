@@ -40,6 +40,8 @@ class _HotKeyRecorderState extends State<HotKeyRecorder> {
 
   _handleRawKeyEvent(RawKeyEvent value) {
     if (value is! RawKeyDownEvent) return;
+    // fix [leanflutter/hotkey_manager: This plugin allows Flutter desktop apps to defines system/inapp wide hotkey (i.e. shortcut). --- Leanflutter/hotkey_manager：该插件允许 Flutter 桌面应用程序定义系统/应用内范围的热键（即快捷方式）。](https://github.com/leanflutter/hotkey_manager/issues/19)
+    if (value.character == null) return;
 
     KeyCode? keyCode;
     List<KeyModifier>? keyModifiers;

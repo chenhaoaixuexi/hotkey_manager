@@ -41,6 +41,8 @@ class HotKeyManager {
 
     if (value is RawKeyDownEvent) {
       if (value.repeat) return;
+      // fix [leanflutter/hotkey_manager: This plugin allows Flutter desktop apps to defines system/inapp wide hotkey (i.e. shortcut). --- Leanflutter/hotkey_manager：该插件允许 Flutter 桌面应用程序定义系统/应用内范围的热键（即快捷方式）。](https://github.com/leanflutter/hotkey_manager/issues/19)
+      if (value.character == null) return;
       HotKey? hotKey = _hotKeyList.firstWhereOrNull(
         (e) {
           return e.scope == HotKeyScope.inapp &&
