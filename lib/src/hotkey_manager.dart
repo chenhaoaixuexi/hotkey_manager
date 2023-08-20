@@ -30,7 +30,7 @@ class HotKeyManager {
     _channel.setMethodCallHandler(_methodCallHandler);
     _inited = true;
   }
-  final Function(RawKeyEvent value)? onRawKeyEvent;
+  Function(RawKeyEvent value)? onRawKeyEvent;
 
   _handleRawKeyEvent(RawKeyEvent value) {
     if (value is RawKeyUpEvent && _lastPressedHotKey != null) {
